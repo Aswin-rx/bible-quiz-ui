@@ -1,2 +1,78 @@
-<p>Bible Quiz</p>
-<h1>Questions</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="quiz-container">
+            <h1>Bible Quiz</h1>
+
+            <div class="question-container">
+                <p class="question">What is the first book of the Bible?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question1" value="Genesis">
+                        Genesis
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="Exodus">
+                        Exodus
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="Leviticus">
+                        Leviticus
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question1" value="Numbers">
+                        Numbers
+                    </label>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <p class="question">Who led the Israelites out of Egypt?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="question2" value="Moses">
+                        Moses
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="Aaron">
+                        Aaron
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="Joshua">
+                        Joshua
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="question2" value="David">
+                        David
+                    </label>
+                </div>
+            </div>
+
+            <!-- Add more questions as needed -->
+
+            <button class="submit-btn">Submit</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bible Quiz. All rights reserved.</p>
+    </footer>
+</body>
+</html>
