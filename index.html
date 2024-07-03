@@ -1,79 +1,214 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Quiz</title>
     <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="title">
-                <h1>Bible Quiz</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+
+    <!-- Header Start -->
+    <div class="header">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><a href="index.html"><img src="images/biblelogo.jpg" alt=""></a></div>
+
+                <ul class="links">
+                    <li><a href="#" id="first">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
-            </nav>
+            </div>
+            <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+            <form action="#" class="search-box">
+                <input type="text" placeholder="Search" required>
+                <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+            </form>
+
+        </nav>
+    </div>
+    <!-- Header End -->
+
+    <!-- Home Section Start -->
+    <div class="home">
+        <div class="main-text">
+            <h1>Bible Quiz </h1>
+            <p>Our mission is to spread the word of God and inspire people to deepen their faith</p>
+            <button id="btn">Join us</button>
         </div>
-    </header>
+    </div>
+    <!-- Home Section End -->
 
-    <main>
-        <div class="quiz-container">
-            <h2>Test Your Knowledge</h2>
+    <!-- About Section Start -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="images/bibleabt.avif" alt="">
+        </div>
+        <div class="about-text">
+            <h3> About us</h3>
+            <p>With all the challenges our world faces today, communities of people of faith are growing to spread the message of God's love and hope.</p>
 
-            <div class="question-container">
-                <p class="question">What is the first book of the Bible?</p>
-                <div class="options">
-                    <label class="option">
-                        <input type="radio" name="question1" value="Genesis">
-                        Genesis
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question1" value="Exodus">
-                        Exodus
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question1" value="Leviticus">
-                        Leviticus
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question1" value="Numbers">
-                        Numbers
-                    </label>
-                </div>
+            <button id="about-btn">Read More...</button>
+        </div>
+        
+    </section>
+    <!-- About Section End -->
+
+
+
+
+
+    <!-- Banner Start -->
+    <div class="banner">
+        <div class="banner-content">
+            
+            <h3>Deepening your faith is possible. We've helped many people do it before.</h3>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+
+
+    <!-- Contact Section Start -->
+    <section class="contact" id="contact">
+        <div class="content-text">
+            <h2>Contact us</h2>
+            <p>Help us spread the word of God and inspire future generations.</p>
+            <p>Join us and deepen your understanding of the Bible..</p>
+            <div class="list">
+                <li><a href="#">+9200000000000000</a></li>
+                <li><a href="#">example@gmail.com</a></li>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form action="#">
+                <input type="name" placeholder="Name" required>
+                <input type="number" placeholder="Phone" required>
+                <input type="email" placeholder="Email" required>
+                <textarea name="" id="" cols="35" rows="10" placeholder="Message"></textarea>
+                <input type="submit" value="Send" class="submit" required>
+
+            </form>
+        </div>
+
+    </section>
+    <!-- Contact Section End -->
+
+
+
+
+
+    <!-- Review Section Start -->
+    <section class="review" id="review">
+        <div class="main-txt">
+            <h2>Customers <span>Review</span></h2>
+        </div>
+
+        <div class="review-content">
+        <div class="box">
+        <div class="img">
+            <img src="./images/pic-1.png" alt="">
+        </div>
+        <h3>Mark</h3>
+        <div class="star">
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+        </div>
+        <p>"Incredibly engaging and educational! My family and I love using this site for our weekly Bible study sessions. The quizzes are challenging yet fun, and we always learn something new!"</p>
+
+    </div>
+        <div class="box">
+        <div class="img">
+            <img src="./images/pic-2.png" alt="">
+        </div>
+        <h3>Sarah</h3>
+        <div class="star">
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+        </div>
+        <p>"Highly recommend this site for anyone wanting to deepen their understanding of the Bible in a interactive way. The quizzes are well-crafted, and the explanations are clear and insightful"</p>
+
+    </div>
+        <div class="box">
+        <div class="img">
+            <img src="./images/pic-3.png" alt="">
+        </div>
+        <h3>John</h3>
+        <div class="star">
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+            <i class="fa-solid fa-star checked"></i>
+        </div>
+        <p>"As someone new to studying the Bible, I was intimidated at first, but this site has made it so accessible and enjoyable. The quizzes are user-friendly and the explanations are clear, making learning about the Bible a joy!"</p>
+
+    </div>
+
+</div>
+
+    </section>
+    <!-- Review Section End -->
+
+
+
+
+
+    <!-- Footer Start -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="images/biblelogo.jpg" alt="">
             </div>
 
-            <div class="question-container">
-                <p class="question">Who led the Israelites out of Egypt?</p>
-                <div class="options">
-                    <label class="option">
-                        <input type="radio" name="question2" value="Moses">
-                        Moses
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question2" value="Aaron">
-                        Aaron
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question2" value="Joshua">
-                        Joshua
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question2" value="David">
-                        David
-                    </label>
-                </div>
+            <p>"Explore the Bible like never before with our engaging quizzes and deepen your understanding of scripture today!</p>
+            
+            <div class="socail-links">
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-pinterest-p"></i>
             </div>
-
-           
-            <button class="submit-btn">Submit</button>
         </div>
-    </main>
+        <hr>
+    </footer>
+    <!-- Footer End -->
+    <a href="#" class="arrow"><i><img src="./images/up-arrow.png" alt="" width="50px"></i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
