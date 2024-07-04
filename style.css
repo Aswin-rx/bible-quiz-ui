@@ -20,7 +20,7 @@ body{
     background: white;
 }
 
-
+/* Header Start */
 .header{
     background: white;
     width: 100%;
@@ -128,7 +128,7 @@ nav .content .links li{
     display: none;
 }
 
-
+/* Responsive */
 @media screen and (max-width:1250px){
     .header nav{
         max-width: 100%;
@@ -186,8 +186,13 @@ nav .content .links li{
         display: none;
     }
 }
+/* Header End */
 
 
+
+
+
+/* Home Section Start */
 .home{
     width: 100%;
     height: 100vh;
@@ -226,8 +231,13 @@ nav .content .links li{
     background-color: #388b6f;
     color: white;
 }
+/* Home Section End */
 
 
+
+
+
+/* Top Section Card Start */
 .offers{
     padding: 10px 8% 20px;
     background: #f3f3f3;
@@ -260,9 +270,13 @@ nav .content .links li{
         grid-template-columns: 1fr;
     }
 }
+/* Top Section Card End */
 
 
 
+
+
+/* About Section Start */
 .about{
     padding: 20px;
     display: grid;
@@ -317,9 +331,9 @@ nav .content .links li{
         max-width: 100%;
     }
 }
+/* About Section End */
 
-
-
+/* Banner Start */
 .banner{
     width: 100%;
     height: 60vh;
@@ -372,8 +386,59 @@ nav .content .links li{
     background: #388b6f;
     border: none;
 }
+/* Banner End */
 
 
+
+
+
+/* Our Galary Start */
+.gallary{
+    padding: 0px 8% 120px;
+}
+.gallary h3{
+    text-align: center;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #388b6f;
+    text-shadow: 0px 1px 1px black;
+}
+.gallary-img{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+.gallary-img img{
+    max-width: 530px;
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.gallary-img img:hover{
+    transform: translateY(-10px);
+}
+@media (max-width:920px){
+    .gallary-img{
+        grid-template-columns: 1fr;
+    }
+    .gallary-img img{
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+}
+/* Our Galary End */
+
+
+
+
+
+/* Contact Section Start */
 .contact{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -447,9 +512,12 @@ form textarea{
         max-width: 100%;
     }
 }
+/* Contact Section End */
 
 
 
+
+/* Review Section Start */
 .review{
     padding: 120px 8% 120px;
     background: white;
@@ -482,8 +550,13 @@ form textarea{
         grid-template-columns: 1fr;
     }
 }
+/* Review Section End */
 
 
+
+
+
+/* Footer Start */
 #footer{
     width: 100%;
     background: #f3f3f3;
@@ -528,7 +601,7 @@ form textarea{
     color: #388b6f;
     font-weight: 600;
 }
-
+/* Footer End */
 html{
     scroll-behavior: smooth;
 }
