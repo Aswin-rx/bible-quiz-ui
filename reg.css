@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+    box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 body {
@@ -12,17 +12,21 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-image: url(images/bg-01.jpg);
-  background-size: cover;
 }
 .container {
   position: relative;
   max-width: 700px;
   width: 100%;
-  background: #fff;
+  background:#fff;
   padding: 25px;
   border-radius: 8px;
+  border:5px solid #388b6f;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container header {
   font-size: 39px;
@@ -100,7 +104,7 @@ body {
 .form button {
   height: 55px;
   width: 100%;
-  color: #fff;
+  color: black;
   font-size: 1rem;
   font-weight: 400;
   margin-top: 30px;
@@ -108,26 +112,32 @@ body {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+  border: 2px solid #388b6f;
+
 }
 .form button:hover{
-  background:linear-gradient(to left, #fc00ff,#00dbde)
+  background-color: #388b6f;
+    color: white;
 
 }
 /*Responsive*/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .form .column {
     flex-wrap: wrap;
   }
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
+  .wrap-login100 {
+      padding-left: 15px;
+      padding-right: 15px;
+      width: 100%;
+      
+    }
+  ul.links{
+      z-index: 2;
+      height:100%;
+      position: fixed;
+  }
+  
 }
