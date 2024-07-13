@@ -1,68 +1,71 @@
 <!DOCTYPE html>
-<!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--<title>Registration Form in HTML CSS</title>-->
-    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reg.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
     <div class="header">
-          <nav>
-              <input type="checkbox" id="show-search">
-              <input type="checkbox" id="show-menu">
-              <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
-              <div class="content">
-                  <div class="logo"><a href="index.html"><img src="images/biblelogo.jpg" alt=""></a></div>
-  
-                  <ul class="links">
-                      <li><a href="#" id="first">Home</a></li>
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                      <li><a href="login.html">Login</a></li>
-                  </ul>
-              </div>
-              <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-              <form action="#" class="search-box">
-                  <input type="text" placeholder="Search" required>
-                  <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-              </form>
-  
-          </nav>
+      <nav>
+        <input type="checkbox" id="show-search">
+        <input type="checkbox" id="show-menu">
+        <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+        <div class="content">
+          <div class="logo"><a href="index.html"><img src="images/biblelogo.jpg" alt=""></a></div>
+          <ul class="links">
+            <li><a href="#" id="first">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+        <form action="#" class="search-box">
+          <input type="text" placeholder="Search" required>
+          <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </form>
+      </nav>
+    </div>
+
     <section class="container">
       <header>Sign up</header>
-      <form action="#" class="form">
+      <form class="form" id="form">
         <div class="input-box">
           <label>Full Name</label>
-          <input type="text" placeholder="Enter full name" required />
+          <input type="text" id="fullname" placeholder="Enter full name" />
+          <small></small>
         </div>
 
         <div class="input-box">
           <label>Email Address</label>
-          <input type="text" placeholder="Enter email address" required />
+          <input type="text" id="email" placeholder="Enter email address" />
+          <small></small>
         </div>
 
         <div class="column">
           <div class="input-box">
             <label>Phone Number</label>
-            <input type="number" placeholder="Enter phone number" required />
+            <input type="text" id="phonenumber" placeholder="Enter phone number" />
+            <small></small>
           </div>
           <div class="input-box">
             <label>Birth Date</label>
-            <input type="date" placeholder="Enter birth date" required />
+            <input type="date" id="birthdate" />
+            <small></small>
           </div>
         </div>
+
         <div class="gender-box">
           <h3>Gender</h3>
           <div class="gender-option">
             <div class="gender">
               <input type="radio" id="check-male" name="gender" checked />
-              <label for="check-male">male</label>
+              <label for="check-male">Male</label>
             </div>
             <div class="gender">
               <input type="radio" id="check-female" name="gender" />
@@ -70,49 +73,54 @@
             </div>
           </div>
         </div>
+
         <div class="input-box address">
           <label>Address</label>
-          <input type="text" placeholder="Enter street address" required />
-          <input type="text" placeholder="Enter street address line 2" required />
-          <div class="column">
-            <div class="select-box">
-              <select>
-                <option hidden>Country</option>
-                <option>America</option>
-                <option>Japan</option>
-                <option>India</option>
-                <option>Nepal</option>
-              </select>
-            </div>
-            <input type="text" placeholder="Enter your city" required />
+          <input type="text" id="address1" placeholder="Enter street address" />
+          <small></small>
+        </div>
+        <div class="input-box address">
+          <input type="text" id="address2" placeholder="Enter street address line 2" />
+          <small></small>
+        </div>
+        <div class="column">
+          <div class="select-box" id="country">
+            <select>
+              <option hidden>Country</option>
+              <option>America</option>
+              <option>Japan</option>
+              <option>India</option>
+              <option>Nepal</option>
+            </select>
+            <small></small>
           </div>
-          <div class="column">
-            <input type="text" placeholder="Enter your region" required />
-            <input type="number" placeholder="Enter postal code" required />
+          <div class="input-box ">
+            <input type="text" id="city" placeholder="Enter your city" />
+            <small></small>
           </div>
         </div>
-        <button>Submit</button>
+        <div class="input-box address">
+          <input type="text" id="region" placeholder="Enter your region" />
+          <small></small>
+        </div>
+        <div class="input-box address">
+          <input type="number" id="postalcode" placeholder="Enter postal code" />
+          <small></small>
+        </div>
+        
+        <div class="input-box">
+          <label>Create Password</label>
+          <input type="password" id="createpassword" placeholder="Create password" />
+          <small></small>
+        </div>
+        
+        <div class="input-box">
+          <label>Confirm Password</label>
+          <input type="password" id="confirmpassword" placeholder="Confirm password" />
+          <small></small>
+        </div>
+        <button type="submit">Submit</button>
       </form>
     </section>
-    <footer id="footer">
-      <div class="footer-content">
-          <div class="logo">
-              <img src="images/biblelogo.jpg" alt="">
-          </div>
-
-          <p>"Explore the Bible like never before with our engaging quizzes and deepen your understanding of scripture today!</p>
-          
-          <div class="socail-links">
-              <i class="fa-brands fa-twitter"></i>
-              <i class="fa-brands fa-facebook-f"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-brands fa-pinterest-p"></i>
-          </div>
-      </div>
-      <hr>
-  </footer>
-
-  <a href="#" class="arrow"><i><img src="./images/up-arrow.png" alt="" width="50px"></i></a>
   </body>
 </html>

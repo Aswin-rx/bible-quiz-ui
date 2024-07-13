@@ -1,18 +1,5 @@
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-    box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
 .container {
   position: relative;
   max-width: 700px;
@@ -22,7 +9,7 @@ body {
   border-radius: 8px;
   border:5px solid #388b6f;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  display: flex;
+  display:block;
   flex-wrap: wrap;
   justify-content: center;
   margin-left: auto;
@@ -39,7 +26,7 @@ body {
 }
 .form .input-box {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .input-box label {
   color: #333;
@@ -60,11 +47,11 @@ body {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 .form .column {
-  display: flex;
-  column-gap: 15px;
+  width: 100%;
+  margin-top: 0px;
 }
 .form .gender-box {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .gender-box h3 {
   color: #333;
@@ -100,7 +87,9 @@ body {
   border: none;
   color: #707070;
   font-size: 1rem;
+  border-top: 10px;
 }
+
 .form button {
   height: 55px;
   width: 100%;
@@ -119,6 +108,38 @@ body {
   background-color: #388b6f;
     color: white;
 
+}
+
+/* Error and success states */
+.input-box input,
+.input-box select {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-box.error input,
+.input-box.error select {
+  border-color: red;
+}
+
+.input-box.success input,
+.input-box.success select {
+  border-color: green;
+}
+
+.input-box small {
+  color: red;
+  visibility: hidden;
+}
+
+.input-box.error small {
+  visibility: visible;
+}
+
+.input-box.success small {
+  visibility: hidden;
 }
 /*Responsive*/
 @media screen and (max-width: 900px) {
