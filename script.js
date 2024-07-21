@@ -14,21 +14,21 @@ window.onload = function() {
     const confirmpassword = document.getElementById('confirmpassword');
     const submitButton = form.querySelector('button[type="submit"]');
 
-    submitButton.disabled = true; // Disable submit button by default
+    submitButton.disabled = true; 
 
-    // Add event listeners to input fields
+
     const inputFields = [fullname, email, phoneNumber, birthdate, address1, address2, country, city, region, postalcode, createpassword, confirmpassword];
     inputFields.forEach(function(field) {
-        field.addEventListener('input', function() {
+        field.addEventListener('blur', function() {
             validateField(field);
             toggleSubmitButton();
         });
 
-        // Convert full name to uppercase on blur
+        
         if (field === fullname) {
             field.addEventListener('blur', function() {
                 fullname.value = fullname.value.trim().toUpperCase();
-                validateField(field);
+                validateFullName();
                 toggleSubmitButton();
             });
         }
@@ -85,8 +85,11 @@ window.onload = function() {
     }
 
     function validateFullName() {
+        const nameRegex = /^[A-Za-z\s]+$/;
         if (fullname.value.trim() === '') {
             setError(fullname, 'Full Name is required');
+        } else if (!nameRegex.test(fullname.value.trim())) {
+            setError(fullname, 'Full Name must contain only alphabets');
         } else {
             setSuccess(fullname);
         }
@@ -113,8 +116,12 @@ window.onload = function() {
     }
 
     function validateBirthdate() {
+        const today = new Date();
+        const dob = new Date(birthdate.value.trim());
         if (birthdate.value.trim() === '') {
-            setError(birthdate, 'Birth Date is required');
+            setError(birthdate, 'DOB is required');
+        } else if (dob > today) {
+            setError(birthdate, 'Enter a valid DOB');
         } else {
             setSuccess(birthdate);
         }
@@ -137,7 +144,8 @@ window.onload = function() {
     }
 
     function validateCountry() {
-        if (country.value.trim() === 'Country' || country.value.trim() === '') {
+        const countryValue = country.value.trim();
+        if (countryValue === '' || countryValue === 'Country') {
             setError(country, 'Country is required');
         } else {
             setSuccess(country);
@@ -173,11 +181,9 @@ window.onload = function() {
     function validateCreatePassword() {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/;
         if (createpassword.value.trim() === '') {
-            setError(createpassword, 'Create Password is required');
-        } else if (createpassword.value.trim().length < 6) {
-            setError(createpassword, 'Password must be at least 6 characters long');
+            setError(createpassword, 'Password is required');
         } else if (!passwordRegex.test(createpassword.value.trim())) {
-            setError(createpassword, 'Password must contain special characters, alphabets, numbers, and capital letters');
+            setError(createpassword, 'Password must be at least 6 characters long, contain one uppercase letter, one lowercase letter, one number, and one special character');
         } else {
             setSuccess(createpassword);
         }
@@ -186,37 +192,32 @@ window.onload = function() {
     function validateConfirmPassword() {
         if (confirmpassword.value.trim() === '') {
             setError(confirmpassword, 'Confirm Password is required');
-        } else if (createpassword.value.trim() !== confirmpassword.value.trim()) {
+        } else if (confirmpassword.value.trim() !== createpassword.value.trim()) {
             setError(confirmpassword, 'Passwords do not match');
         } else {
             setSuccess(confirmpassword);
         }
     }
 
-    function setError(element, message) {
-        const inputBox = element.parentElement;
+    function setError(input, message) {
+        const inputBox = input.parentElement;
         const small = inputBox.querySelector('small');
-        inputBox.className = 'input-box error';
         small.innerText = message;
+        inputBox.className = 'input-box error';
     }
 
-    function setSuccess(element) {
-        const inputBox = element.parentElement;
+    function setSuccess(input) {
+        const inputBox = input.parentElement;
         inputBox.className = 'input-box success';
     }
 
     function isValidEmail(email) {
-        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return re.test(email);
-    }
-
-    function isFormValid() {
-        return Array.prototype.every.call(document.querySelectorAll('.input-box'), function(inputBox) {
-            return inputBox.classList.contains('success');
-        });
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
     function toggleSubmitButton() {
-        submitButton.disabled = !isFormValid();
+        submitButton.disabled = ![...inputFields].every(field => {
+            return field.parentElement.className === 'input-box success';
+        });
     }
 };
