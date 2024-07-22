@@ -13,9 +13,26 @@ window.onload = function() {
     const createpassword = document.getElementById('createpassword');
     const confirmpassword = document.getElementById('confirmpassword');
     const submitButton = form.querySelector('button[type="submit"]');
+    const togglePasswordCreate = document.getElementById('togglePasswordCreate');
+    const togglePasswordConfirm = document.getElementById('togglePasswordConfirm');
 
+    togglePasswordCreate.addEventListener('click', function() {
+        const type = createpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        createpassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+        this.classList.toggle('fa-eye');
+    });
+
+    togglePasswordConfirm.addEventListener('click', function() {
+        const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmpassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+        this.classList.toggle('fa-eye');
+        
+    });
+
+  
     submitButton.disabled = true; 
-
 
     const inputFields = [fullname, email, phoneNumber, birthdate, address1, address2, country, city, region, postalcode, createpassword, confirmpassword];
     inputFields.forEach(function(field) {
@@ -24,7 +41,6 @@ window.onload = function() {
             toggleSubmitButton();
         });
 
-        
         if (field === fullname) {
             field.addEventListener('blur', function() {
                 fullname.value = fullname.value.trim().toUpperCase();
@@ -192,7 +208,7 @@ window.onload = function() {
     function validateConfirmPassword() {
         if (confirmpassword.value.trim() === '') {
             setError(confirmpassword, 'Confirm Password is required');
-        } else if (confirmpassword.value.trim() !== createpassword.value.trim()) {
+        } else if (confirmpassword.value !== createpassword.value) {
             setError(confirmpassword, 'Passwords do not match');
         } else {
             setSuccess(confirmpassword);
@@ -212,12 +228,12 @@ window.onload = function() {
     }
 
     function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     function toggleSubmitButton() {
-        submitButton.disabled = ![...inputFields].every(field => {
-            return field.parentElement.className === 'input-box success';
-        });
+        const allValid = inputFields.every(field => field.parentElement.classList.contains('success'));
+        submitButton.disabled = !allValid;
     }
 };

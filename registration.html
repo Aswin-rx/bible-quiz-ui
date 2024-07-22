@@ -9,7 +9,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <div class="header">
         <nav>
             <input type="checkbox" id="show-search">
@@ -106,14 +106,20 @@
             </div>
             <div class="input-box">
                 <label>Create Password</label>
-                <input type="password" id="createpassword" placeholder="Create password" />
+                <div style="position: relative;">
+                  <input type="password" id="createpassword" placeholder="Create password" />
+                  <i class="fa-solid fa-eye-slash" id="togglePasswordCreate"></i>
+                </div>
                 <small></small>
-            </div>
-            <div class="input-box">
+              </div>
+              <div class="input-box">
                 <label>Confirm Password</label>
-                <input type="password" id="confirmpassword" placeholder="Confirm password" />
+                <div style="position: relative;">
+                  <input type="password" id="confirmpassword" placeholder="Confirm password" />
+                  <i class="fa-solid fa-eye-slash" id="togglePasswordConfirm"></i>
+                </div>
                 <small></small>
-            </div>
+              </div>              
             <button type="submit" disabled>Submit</button>
         </form>
     </section>
