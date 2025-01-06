@@ -1,239 +1,202 @@
-window.onload = function() {
-    const form = document.getElementById('form');
-    const fullname = document.getElementById('fullname');
-    const email = document.getElementById('email');
-    const phoneNumber = document.getElementById('phonenumber');
-    const birthdate = document.getElementById('birthdate');
-    const address1 = document.getElementById('address1');
-    const address2 = document.getElementById('address2');
-    const country = document.getElementById('country');
-    const city = document.getElementById('city');
-    const region = document.getElementById('region');
-    const postalcode = document.getElementById('postalcode');
-    const createpassword = document.getElementById('createpassword');
-    const confirmpassword = document.getElementById('confirmpassword');
-    const submitButton = form.querySelector('button[type="submit"]');
-    const togglePasswordCreate = document.getElementById('togglePasswordCreate');
-    const togglePasswordConfirm = document.getElementById('togglePasswordConfirm');
+$(document).ready(function() {
+    const form = $('#form');
+    const fullname = $('#fullname');
+    const email = $('#email');
+    const phoneNumber = $('#phonenumber');
+    const birthdate = $('#birthdate');
+    const address1 = $('#address1');
+    const address2 = $('#address2');
+    const country = $('#country');
+    const city = $('#city');
+    const region = $('#region');
+    const postalcode = $('#postalcode');
+    const createpassword = $('#createpassword');
+    const confirmpassword = $('#confirmpassword');
+    const submitButton = form.find('button[type="submit"]');
+    const togglePasswordCreate = $('#togglePasswordCreate');
+    const togglePasswordConfirm = $('#togglePasswordConfirm');
 
-    togglePasswordCreate.addEventListener('click', function() {
-        const type = createpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-        createpassword.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
-        this.classList.toggle('fa-eye');
+    togglePasswordCreate.click(function() {
+        const type = createpassword.attr('type') === 'password' ? 'text' : 'password';
+        createpassword.attr('type', type);
+        $(this).toggleClass('fa-eye-slash fa-eye');
     });
 
-    togglePasswordConfirm.addEventListener('click', function() {
-        const type = confirmpassword.getAttribute('type') === 'password' ? 'text' : 'password';
-        confirmpassword.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
-        this.classList.toggle('fa-eye');
-        
+    togglePasswordConfirm.click(function() {
+        const type = confirmpassword.attr('type') === 'password' ? 'text' : 'password';
+        confirmpassword.attr('type', type);
+        $(this).toggleClass('fa-eye-slash fa-eye');
     });
 
-  
-    submitButton.disabled = true; 
+    submitButton.prop('disabled', true);
 
-    const inputFields = [fullname, email, phoneNumber, birthdate, address1, address2, country, city, region, postalcode, createpassword, confirmpassword];
-    inputFields.forEach(function(field) {
-        field.addEventListener('blur', function() {
-            validateField(field);
-            toggleSubmitButton();
-        });
+    fullname.on('blur', validateFullName);
+    email.on('blur', validateEmail);
+    phoneNumber.on('blur', validatePhoneNumber);
+    birthdate.on('blur', validateBirthdate);
+    address1.on('blur', validateAddress1);
+    address2.on('blur', validateAddress2);
+    country.on('blur', validateCountry);
+    city.on('blur', validateCity);
+    region.on('blur', validateRegion);
+    postalcode.on('blur', validatePostalCode);
+    createpassword.on('blur', validateCreatePassword);
+    confirmpassword.on('blur', validateConfirmPassword);
 
-        if (field === fullname) {
-            field.addEventListener('blur', function() {
-                fullname.value = fullname.value.trim().toUpperCase();
-                validateFullName();
-                toggleSubmitButton();
-            });
-        }
-    });
-
-    form.addEventListener('submit', function(event) {
+    form.on('submit', function(event) {
         event.preventDefault();
-        if (!submitButton.disabled) {
+        if (!submitButton.prop('disabled')) {
             form.submit();
         }
     });
 
-    function validateField(field) {
-        switch (field.id) {
-            case 'fullname':
-                validateFullName();
-                break;
-            case 'email':
-                validateEmail();
-                break;
-            case 'phonenumber':
-                validatePhoneNumber();
-                break;
-            case 'birthdate':
-                validateBirthdate();
-                break;
-            case 'address1':
-                validateAddress1();
-                break;
-            case 'address2':
-                validateAddress2();
-                break;
-            case 'country':
-                validateCountry();
-                break;
-            case 'city':
-                validateCity();
-                break;
-            case 'region':
-                validateRegion();
-                break;
-            case 'postalcode':
-                validatePostalCode();
-                break;
-            case 'createpassword':
-                validateCreatePassword();
-                break;
-            case 'confirmpassword':
-                validateConfirmPassword();
-                break;
-            default:
-                break;
-        }
-    }
-
     function validateFullName() {
         const nameRegex = /^[A-Za-z\s]+$/;
-        if (fullname.value.trim() === '') {
+        if (fullname.val().trim() === '') {
             setError(fullname, 'Full Name is required');
-        } else if (!nameRegex.test(fullname.value.trim())) {
+        } else if (!nameRegex.test(fullname.val().trim())) {
             setError(fullname, 'Full Name must contain only alphabets');
         } else {
             setSuccess(fullname);
         }
+        toggleSubmitButton();
     }
 
     function validateEmail() {
-        if (email.value.trim() === '') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.val().trim() === '') {
             setError(email, 'Email is required');
-        } else if (!isValidEmail(email.value.trim())) {
+        } else if (!emailRegex.test(email.val().trim())) {
             setError(email, 'Email is not valid');
         } else {
             setSuccess(email);
         }
+        toggleSubmitButton();
     }
 
     function validatePhoneNumber() {
-        if (phoneNumber.value.trim() === '') {
+        const phoneRegex = /^\d{10}$/;
+        if (phoneNumber.val().trim() === '') {
             setError(phoneNumber, 'Phone Number is required');
-        } else if (!/^\d{10}$/.test(phoneNumber.value.trim())) {
+        } else if (!phoneRegex.test(phoneNumber.val().trim())) {
             setError(phoneNumber, 'Phone Number must be 10 digits');
         } else {
             setSuccess(phoneNumber);
         }
+        toggleSubmitButton();
     }
 
     function validateBirthdate() {
         const today = new Date();
-        const dob = new Date(birthdate.value.trim());
-        if (birthdate.value.trim() === '') {
+        const dob = new Date(birthdate.val().trim());
+        if (birthdate.val().trim() === '') {
             setError(birthdate, 'DOB is required');
         } else if (dob > today) {
             setError(birthdate, 'Enter a valid DOB');
         } else {
             setSuccess(birthdate);
         }
+        toggleSubmitButton();
     }
 
     function validateAddress1() {
-        if (address1.value.trim() === '') {
+        if (address1.val().trim() === '') {
             setError(address1, 'Address Line 1 is required');
         } else {
             setSuccess(address1);
         }
+        toggleSubmitButton();
     }
 
     function validateAddress2() {
-        if (address2.value.trim() === '') {
+        if (address2.val().trim() === '') {
             setError(address2, 'Address Line 2 is required');
         } else {
             setSuccess(address2);
         }
+        toggleSubmitButton();
     }
 
     function validateCountry() {
-        const countryValue = country.value.trim();
+        const countryValue = country.val().trim();
         if (countryValue === '' || countryValue === 'Country') {
             setError(country, 'Country is required');
         } else {
             setSuccess(country);
         }
+        toggleSubmitButton();
     }
 
     function validateCity() {
-        if (city.value.trim() === '') {
+        if (city.val().trim() === '') {
             setError(city, 'City is required');
         } else {
             setSuccess(city);
         }
+        toggleSubmitButton();
     }
 
     function validateRegion() {
-        if (region.value.trim() === '') {
+        if (region.val().trim() === '') {
             setError(region, 'Region is required');
         } else {
             setSuccess(region);
         }
+        toggleSubmitButton();
     }
 
     function validatePostalCode() {
-        if (postalcode.value.trim() === '') {
+        const postalCodeRegex = /^\d+$/;
+        if (postalcode.val().trim() === '') {
             setError(postalcode, 'Postal Code is required');
-        } else if (!/^\d+$/.test(postalcode.value.trim())) {
+        } else if (!postalCodeRegex.test(postalcode.val().trim())) {
             setError(postalcode, 'Postal Code must contain only numbers');
         } else {
             setSuccess(postalcode);
         }
+        toggleSubmitButton();
     }
 
     function validateCreatePassword() {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/;
-        if (createpassword.value.trim() === '') {
+        if (createpassword.val().trim() === '') {
             setError(createpassword, 'Password is required');
-        } else if (!passwordRegex.test(createpassword.value.trim())) {
+        } else if (!passwordRegex.test(createpassword.val().trim())) {
             setError(createpassword, 'Password must be at least 6 characters long, contain one uppercase letter, one lowercase letter, one number, and one special character');
         } else {
             setSuccess(createpassword);
         }
+        toggleSubmitButton();
     }
 
     function validateConfirmPassword() {
-        if (confirmpassword.value.trim() === '') {
+        if (confirmpassword.val().trim() === '') {
             setError(confirmpassword, 'Confirm Password is required');
-        } else if (confirmpassword.value !== createpassword.value) {
+        } else if (confirmpassword.val() !== createpassword.val()) {
             setError(confirmpassword, 'Passwords do not match');
         } else {
             setSuccess(confirmpassword);
         }
+        toggleSubmitButton();
     }
 
     function setError(input, message) {
-        const inputBox = input.parentElement;
-        const small = inputBox.querySelector('small');
-        small.innerText = message;
-        inputBox.className = 'input-box error';
+        const inputBox = input.parent();
+        const small = inputBox.find('small');
+        small.text(message);
+        inputBox.addClass('error').removeClass('success');
     }
 
     function setSuccess(input) {
-        const inputBox = input.parentElement;
-        inputBox.className = 'input-box success';
-    }
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+        const inputBox = input.parent();
+        const small = inputBox.find('small');
+        small.text('')
+        inputBox.addClass('success').removeClass('error');
     }
 
     function toggleSubmitButton() {
-        const allValid = inputFields.every(field => field.parentElement.classList.contains('success'));
-        submitButton.disabled = !allValid;
+        const allValid = [fullname, email, phoneNumber, birthdate, address1, address2, country, city, region, postalcode, createpassword, confirmpassword]
+            .every(field => field.parent().hasClass('success'));
+        submitButton.prop('disabled', !allValid);
     }
-};
+});

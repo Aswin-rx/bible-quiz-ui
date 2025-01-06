@@ -126,7 +126,7 @@
   cursor: not-allowed;
   border: 2px solid #ccc;
 }
-/* Error and success states */
+
 .input-box input,
 .input-box select {
   border: 1px solid #ccc;
@@ -152,12 +152,47 @@
 .input-box.success small {
   visibility: hidden;
 }
-/*Responsive*/
-@media screen and (max-width: 500px) {
-  .form .column {
-    flex-wrap: wrap;
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 90%;
   }
-  .form :where(.gender-option, .gender) {
-    row-gap: 15px;
+
+  .container header {
+    font-size: 30px;
+  }
+
+  .form button {
+    height: 50px;
+    font-size: 0.9rem;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .container header {
+    font-size: 24px;
+  }
+
+  .form .input-box {
+    margin-top: 8px;
+  }
+
+  .form button {
+    height: 45px;
+    font-size: 0.85rem;
+  }
+
+  .fa-eye,
+  .fa-eye-slash {
+    right: 8px;
+    top: 65%; /* Adjusted for mobile alignment */
+    transform: translateY(-65%);
   }
 }
